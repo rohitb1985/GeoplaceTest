@@ -1,0 +1,39 @@
+Geoplace Example:
+
+The Application has been developed using Spring Boot and can be run as a Java Application.
+The tomcat server has been added as a maven dependency and runs on port 8080.
+
+Following rest operations have been created as part of the exercise:
+POST Request to create a new Candidate
+URL: http://localhost:8080/geoplace/v1/api/createCandidate
+For testing Postman has been used where the content-type is set as application/json and sample request body looks like:
+{
+	"name" : "Rohit",
+	"qualification" : "B.Tech",
+	"interests" : "reading",
+	"linkedInProfileUrl" : "http://www.linkedin.com"
+}
+If the candidate details don't exist the candidate will be created but if candidate with same name exist, the linked in profile url will be compared and if that is also same
+a message stating "Candidate information already exists" is returned.
+
+PUT Request to update the candidate information
+URL: http://localhost:8080/geoplace/v1/api/updateCandidate
+For testing Postman has been used where the content-type is set as application/json and sample request body looks like:
+{
+	"name" : "Rohit",
+	"qualification" : "B.Tech",
+	"interests" : "reading & writing",
+	"linkedInProfileUrl" : "http://www.linkedin.com"
+}
+If candidate exists based on the candidate name (exact match) then candidate details are updated, else a message stating "Candidate details not found" is returned.
+
+GET Request to get the candidate details based on the name
+URL: http://localhost:8080/geoplace/v1/api/getCandidateDetails/rohit
+This will not match the exact name but return a list of candidates ignoring the case.
+
+URL: http://localhost:8080/geoplace/v1/api/getAllCandidateDetails
+This will return a list of all candidates
+
+DELETE Request to delete the candidate details
+URL: http://localhost:8080/geoplace/v1/api/deleteCandidate/Rohit
+This will delete the candidate details based on the candidate name (exact match).
